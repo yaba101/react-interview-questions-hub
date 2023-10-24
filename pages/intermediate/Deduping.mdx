@@ -1,0 +1,62 @@
+# Explain Deduping?
+
+Deduping in React usually refers to preventing unnecessary duplicate API calls or rendering when using hooks. Let's say you have a functional component that makes an API request and renders some data. In order to avoid redundant API calls, we can use the `useEffect` and `useState` hooks alongside a custom hook.
+
+Here's an example:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+// Custom hook for fetching data
+const useFetchData = (url) => {
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [url]);
+
+  return { data, isLoading };
+};
+
+const MyComponent = () => {
+  const url = 'https://api.example.com/data';
+  const { data, isLoading } = useFetchData(url);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      {data.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+In this example, we create a custom hook called `useFetchData`. This hook takes a single argument, the URL, and returns an object with two properties: `data` and `isLoading`.
+
+Inside the custom hook, we have two `useState` hooks:
+- `data` initially set to `null`
+- `isLoading` initially set to `true`
+
+We use the `useEffect` hook to fetch data asynchronously. This hook has `url` as a dependency, so it will re-run whenever the `url` changes.
+
+We then use this custom hook in our `MyComponent` functional component. The hook manages the data fetching process and ensures deduping by preventing duplicate requests to the same URL. Even if the component re-renders or new props are received, the custom hook takes care of avoiding unnecessary API calls.
+
+In this scenario, deduping means avoiding redundant fetches and ensuring that we only make an API request when necessary (e.g. when the `url` prop changes).
