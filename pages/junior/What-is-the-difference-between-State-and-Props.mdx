@@ -1,0 +1,43 @@
+# What is the difference between State and Props
+
+
+In React, `state` and `props` are two different ways of managing data in a component.
+
+`State` is data that is managed and updated by the component itself. It is local to the component and can change over time as the result of user interactions or other events. State is managed using the `useState` hook or the `setState` method in class components.
+
+For example, consider a simple counter component that displays a count and has a button to increment the count:
+
+```jsx copy
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
+
+```
+
+In this example, the `count` variable is part of the component's state. It is initialized to `0` using the `useState` hook and updated when the user clicks the "Increment" button by calling the `setCount` function.
+
+`Props`, on the other hand, are data that is passed to a component from its parent. Props are read-only and cannot be modified by the component itself. Instead, they are used to pass data and event handlers down the component tree.
+
+For example, consider a simple greeting component that displays a message based on a `name` prop:
+
+```jsx copy
+function Greeting({ name }) {
+  return <p>Hello, {name}!</p>;
+}
+
+```
+
+In this example, the `name` variable is a prop that is passed to the `Greeting` component from its parent. The `Greeting` component uses this prop to display a personalized greeting message.
+
+In summary, `state` and `props` are two different ways of managing data in a React component. State is local to the component and can change over time while props are passed from the parent and are read-only. Both state and props can be used together to build complex and interactive user interfaces. 😊
