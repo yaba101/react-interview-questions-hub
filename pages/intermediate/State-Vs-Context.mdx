@@ -1,0 +1,96 @@
+# State Vs Context
+
+
+In React, both state and context are mechanisms for managing data within your application, but they serve different purposes and have different use cases.
+
+**Before explain the state and context using react lets understand the concept like we are 5 years old:** 
+
+Alright! Imagine you have a special bag, and this bag can hold important stuff for you.
+
+- **State** is like a pocket in your clothes. It's a place where you keep things you need right now, like your candy or your favorite toy. It's small and quick to access, but it's only for you.
+- **Context**, on the other hand, is like a magic backpack you share with your family. Everyone in your family can put things in there, and you can all see what's inside. So, if you want to share your cookies with your brother, you can both find them in the magic backpack.
+
+In React, "state" is used for things that belong to one specific part of your app, while "context" is for things that need to be shared between different parts of your app, like telling everyone what your family wants to eat for dinner.
+
+**Now let’s talk about those using react**
+
+**State**:
+
+- State is local data that is managed within a specific functional or class component (in our case, we'll focus on functional components using hooks).
+- State is used to control a component's behavior, store information, and trigger re-rendering when it changes.
+- The `useState` hook is commonly used in functional components to manage state.
+
+Example using state:
+
+```jsx copy
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+
+  return (
+    <div>
+      <span>Count: {count}</span>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+**Context**:
+
+- Context provides a way to pass data through the component tree without having to pass it down manually via props.
+- It's useful when you need to share global data that can be accessed by multiple components at different nesting levels.
+- The `React.createContext`, `useContext`, and `Context.Provider` APIs work together to create and consume context in functional components.
+
+Example using context:
+
+```jsx filename="ThemeContext.js" copy
+
+import { createContext } from 'react';
+
+const ThemeContext = createContext('light');
+
+export default ThemeContext;
+```
+
+```jsx filename="App.jsx" copy
+
+import React from 'react';
+import ThemeContext from './ThemeContext';
+import ThemeToggler from './ThemeToggler';
+
+function App() {
+  return (
+    <ThemeContext.Provider value='dark'>
+      <ThemeToggler />
+    </ThemeContext.Provider>
+  );
+}
+
+export default App;
+```
+
+```jsx filename="ThemeToggler.jsx" copy
+
+import React, { useContext } from 'react';
+import ThemeContext from './ThemeContext';
+
+function ThemeToggler() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <div>
+      <span>Current theme: {theme}</span>
+    </div>
+  );
+}
+
+export default ThemeToggler;
+```
+
+In summary, state is used to manage local data within a specific component, while context is used to share global data across multiple components in your application without the need for prop drilling.

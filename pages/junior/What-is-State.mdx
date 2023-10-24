@@ -7,7 +7,7 @@ We need state in React because:
 ## 1. **Dynamic content**
 State allows components to display dynamic content that can change due to user interactions, such as input values, buttons being clicked, or toggles being switched.
     
-    ```jsx
+   ```jsx copy
     import { useState } from 'react';
     
     type DynamicProps= {
@@ -36,7 +36,7 @@ State allows components to display dynamic content that can change due to user i
 ## 2. **Responsiveness**
 By using state, React components can efficiently update only the parts of the UI that have changed, making the app feel more responsive. 
 
-```jsx
+```jsx copy
 import  { useState } from 'react';
 
 const ResponsiveComponent= () => {
@@ -66,7 +66,7 @@ const ResponsiveComponent= () => {
 ## 3. **Local data management**
 State helps in managing data locally in a component; some information doesn't need to be passed down from parent components or stored globally in the app. State allows component-specific data management, which simplifies the overall structure of the application.
 
-```jsx
+```jsx copy
 import { useState } from 'react';
 
 type Item = {
@@ -108,7 +108,7 @@ const SimpleComponent= () => {
 ## 4. **UI logic**
 State enables you to build complex UI logic based on conditions and transitions that rely on mutable data. For example, opening menus or modal dialogs, showing loaders while waiting for server responses, and toggling between different views in a component.
 
-```jsx
+```jsx copy
 import { useState } from 'react';
 
 interface DialogProps{
