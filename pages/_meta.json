@@ -1,6 +1,7 @@
 {
   "index": "Introduction",
   "junior": "Junior",
+  "intermediate": "Intermediate",
   "about": {
     "title": "About",
     "type": "page"
