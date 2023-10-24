@@ -2,6 +2,7 @@
   "index": "Introduction",
   "junior": "Junior",
   "intermediate": "Intermediate",
+  "senior": "Senior",
   "about": {
     "title": "About",
     "type": "page"
