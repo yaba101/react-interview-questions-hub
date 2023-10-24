@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "react-interview-questions",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "react-interview-questions site",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/shuding/nextra-docs-template.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Yeabsira Mekuria",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shuding/nextra-docs-template/issues"
