@@ -1,0 +1,10 @@
+# What is VirtualDOM
+
+
+The Virtual DOM is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. It is an abstraction of the HTML DOM and is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction .
+
+React creates a tree of custom objects representing a part of the DOM. For example, instead of creating an actual DIV element containing a UL element, it creates a React.div object that contains a React.ul object. It can manipulate these objects very quickly without actually touching the real DOM or going through the DOM API. Then, when it renders a component, it uses this virtual DOM to figure out what it needs to do with the real DOM to get the two trees to match .
+
+The primary benefit of using a virtual DOM is that it allows for efficient updates and minimizes changes to the actual DOM, which tend to be slow, particularly with frequent updates. When a component's state or props are updated, React creates a new virtual DOM tree and then compares it with the previous virtual DOM tree (using a process called "reconciliation"). Based on this comparison, React calculates the minimum necessary changes to make in the actual DOM and then performs those updates.
+
+I hope this helps clarify what the Virtual DOM is and how it works in React! Let me know if you have any further questions 😊
