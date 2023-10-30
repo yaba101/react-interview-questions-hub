@@ -1,0 +1,68 @@
+# Controlled and Uncontrolled Component
+
+: Intermediate, Pending
+
+Controlled and uncontrolled components in React refer to how form elements, such as inputs, manage their state.
+
+## Controlled Component
+
+A controlled component is one where the component's state is managed by the parent component or by the component itself using React's state management. The input element's value is set using React's state, and any changes to the value are synced with the state. Here's an example of a controlled component using React hooks:
+
+```jsx
+import { useState } from 'react';
+
+function ControlledInput() {
+  const [value, setValue] = useState('');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor="controlledInput">Controlled Input:</label>
+      <input
+        type="text"
+        id="controlledInput"
+        value={value}
+        onChange={handleChange}
+      />
+    </div>
+  );
+}
+
+export default ControlledInput;
+
+```
+
+In the example above, the input's value is stored in the `value` state variable. The `handleChange` function updates the state with the current input value when the user types something.
+
+## Uncontrolled Component
+
+An uncontrolled component is one where form elements manage their own state internally, without using React state. To access these elements' values, you would use React's `ref` system directly. Here's an example of an uncontrolled component:
+
+```jsx
+import { useRef } from 'react';
+
+function UncontrolledInput() {
+  const inputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    alert(`Input Value: ${inputRef.current.value}`);
+  };
+
+  return (
+    <div>
+      <label htmlFor="uncontrolledInput">Uncontrolled Input:</label>
+      <input type="text" id="uncontrolledInput" ref={inputRef} />
+      <button onClick={handleButtonClick}>Submit</button>
+    </div>
+  );
+}
+
+export default UncontrolledInput;
+```
+
+In this example, the state of the input is not managed by React. The `inputRef` is used to read the value directly from the input element. When the user clicks the "Submit" button, the `handleButtonClick` function will show an alert with the current input value obtained via the `inputRef`.
+
+Controlled components are typically recommended for most use cases since they allow better control and integration with React's state management system. Uncontrolled components may be useful in specific situations where using React to manage state is unnecessary or less efficient.
