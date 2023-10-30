@@ -1,0 +1,29 @@
+# Hooks Rules
+
+React Hook rules apply to functional components since hooks cannot be used with class components. Here are the two primary rules of React Hooks:
+
+1. Only call hooks at the top level: Do not call hooks inside loops, conditions, or nested functions. Doing so can cause bugs and violate React's rule of hooks, as they rely on the call order to maintain the correct state. Always call hooks at the top level of your functional component or custom-hook function.
+2. Only call hooks from React functions: Call hooks from functional components or custom hooks, but don't use them in regular JavaScript functions. This ensures that hooks are used in a way that respects React's component lifecycle and state management.
+
+## Some common gotchas of React Hooks
+
+1. Missing dependencies in `useEffect` and other dependency-based hooks: Forgetting to add a dependency to the dependency array can lead to stale data or infinite loops. React helps by providing a warning, but it's important to thoroughly analyze the dependencies needed for specific effects.
+
+```jsx
+// Gotcha: missing dependency in the dependency array
+useEffect(() => {
+  fetchUser(userId).then((userData) => setUser(userData));
+}, []); // <- Should contain 'userId' in the dependency array
+```
+
+2. Overwriting state with multiple `useState`: When using multiple `useState` hooks that depend on each other, incorrect sequencing may lead to overwriting part of the state. This issue can be solved by using the `useReducer` hook or combining related state into a single object.
+
+```jsx
+const [email, setEmail] = useState('');
+const [username, setUsername] = useState('');
+
+// Gotcha: potentially overwriting email when updating username
+setUsername('newUsername');
+setEmail('newEmail@example.com');
+```
+
