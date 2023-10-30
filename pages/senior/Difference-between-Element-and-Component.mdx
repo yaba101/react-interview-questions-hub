@@ -1,0 +1,25 @@
+# Difference between Element and Component in React
+
+
+React has two main building blocks: **Element** and **Component**. Although they are related, they have some fundamental differences.
+
+An **Element** in React is a plain JavaScript object that describes a component instance or a DOM node. It is a lightweight description of what to render on the screen. An element is created using JSX syntax, which is a syntax extension for JavaScript. Elements are immutable, meaning that they cannot be modified once they are created.
+
+```tsx copy
+const element = <h1>Hello, world!</h1>;
+```
+
+A **Component** in React is a function or a class that returns an element tree. It is a reusable piece of code that encapsulates the behavior and rendering logic of a UI component. Components can be used to create complex UIs by composing smaller, reusable components. Components can have state and lifecycle methods, which allows them to handle user interactions and update the UI accordingly.
+
+```tsx copy
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="Sara" />;
+
+```
+
+The main difference between elements and components is that elements are the building blocks of components. Elements are created using JSX syntax, and components are functions or classes that return elements. Components provide a way to encapsulate and reuse logic and rendering behavior across different parts of the application.
+
+In summary, elements are lightweight descriptions of what to render, and components are reusable pieces of code that encapsulate rendering and behavior logic. Both elements and components are essential building blocks in React applications.
