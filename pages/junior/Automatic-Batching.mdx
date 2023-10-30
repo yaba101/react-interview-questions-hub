@@ -1,0 +1,44 @@
+# Automatic Batching in React
+
+## Understanding Automatic Batching
+
+When working with React, any time you call the `setState` function to update the state of a component, React doesn't immediately re-render the component. Instead, it batches multiple state updates together and performs a single re-rendering. This process is known as automatic batching.
+
+Automatic batching is crucial for performance optimization because it reduces the number of re-renders and updates to the DOM. By batching state updates, React ensures that only the final result is rendered, saving unnecessary renders and improving application performance.
+
+Let's take a look at an example to understand how automatic batching works. Consider a React component that increments a counter by one every time a button is clicked:
+
+```jsx copy
+import { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+
+```
+
+In the `handleClick` function, we call `setCount` twice with the intention of incrementing the count by two. However, due to automatic batching, React will only perform a single re-render and update the count by one. This is because React batches the two state updates together and only updates the DOM once.
+
+## Benefits of Automatic Batching
+
+Automatic batching offers several benefits in React development. Firstly, it improves performance by reducing the number of re-renders, resulting in a smoother user experience. It also helps avoid unnecessary updates to the DOM, which can be costly in terms of performance.
+
+Additionally, automatic batching simplifies the programming model by allowing developers to write code that assumes immediate state updates. This makes the development process more straightforward and easier to reason about.
+
+## Conclusion
+
+Automatic batching is a powerful feature in React that optimizes the rendering process by batching multiple state updates together. By reducing the number of re-renders and updates to the DOM, automatic batching significantly improves the performance of React applications. As a developer, understanding how automatic batching works can help you write more efficient and performant React code.
