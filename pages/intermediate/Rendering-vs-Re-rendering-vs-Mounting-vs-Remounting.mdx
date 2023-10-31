@@ -1,0 +1,94 @@
+# Rendering vs Re-rendering vs Mounting vs Remounting in React
+
+
+## TL;Dr
+
+**`Mounting`** refers to the process when a component is created and inserted into the DOM for the first time.
+
+**`Unmounting`** refers to the process when a component is removed from the DOM (for example, when it is no longer needed or when it is replaced with a different component).
+
+**`Re-mounting`** (or re-mount) happens when a previously unmounted component is mounted again (for example, due to a change in state or props).
+
+**`Rendering`** refers to the process of generating a virtual representation of a component's UI hierarchy. This process occurs on every update, including the first time the component is mounted.
+
+**`Re-rendering`** occurs when a new virtual representation of a component's UI hierarchy is generated due to a change in state or props. This new virtual representation is then used to update the actual UI displayed to the user.
+
+In summary, **`Mounting`** and **`Unmounting`** describe when a component is added or removed from the DOM, while **`Rendering`** and **`Re-rendering`** describe the process of generating and updating the virtual representation of a component's UI hierarchy. `**Re-mounting**` is simply when a previously unmounted component is mounted again.
+
+## Rendering
+
+Rendering is the process of creating a tree of React elements and converting them into a virtual DOM representation. This process happens when a component is first created or when its state or props change. The virtual DOM is then compared to the previous version, and only the necessary changes are applied to the real DOM.
+
+```jsx copy
+import React from 'react';
+
+function App() {
+  return (
+    <div>
+      <h1>Hello World!</h1>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+In the above code, the `render` function creates a tree of React elements and returns them. This tree is then converted into a virtual DOM representation and compared to the previous version.
+
+## Re-rendering
+
+Re-rendering occurs when a component's state or props change. When this happens, the `render` function is called again, and a new tree of React elements is created. This new tree is then compared to the previous virtual DOM representation, and only the necessary changes are applied to the real DOM.
+
+```jsx copy
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+```
+
+In the above code, the `Counter` component uses the `useState` hook to manage its state. When the `handleClick` function is called, the `count` state is updated, triggering a re-render of the component.
+
+## Mounting and Remounting
+
+Mounting is the process of creating a new instance of a component and adding it to the DOM. This happens when a component is first rendered. Remounting occurs when a component is removed from the DOM and then added back again.
+
+```jsx copy
+import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => setTime(new Date()), 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+    <div>
+      <h1>Time: {time.toLocaleTimeString()}</h1>
+    </div>
+  );
+}
+
+export default Timer;
+
+```
+
+In the above code, the `Timer` component uses the `useEffect` hook to create an interval that updates the `time` state every second. When the component is first mounted, the interval is created. When the component is unmounted and then mounted again, a new instance of the component is created, and a new interval is created.
