@@ -1,23 +1,29 @@
-# Nextra Docs Template 
+# About React Interview Questions
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+Welcome to the React Interview Questions website, your go-to resource for preparing for React developer interviews. Whether you're a beginner or an experienced developer looking to brush up on your skills, we've got you covered.
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+## What You'll Find Here
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+- Common React Interview Questions: We've compiled a list of frequently asked React interview questions to help you practice and improve your knowledge.
+- Unique React Interview Questions: We've also compiled a list of unique React interview questions to help outstand your react understanding.
+- Detailed Answers: Each question comes with a detailed answer and explanations, ensuring you understand the concepts thoroughly.
+- Code Examples: Explore practical code examples to illustrate key React concepts and best practices.
 
-## Quick Start
+## Topics Covered
 
-Click the button to clone this repository and deploy it on Vercel:
+Our React interview questions cover a wide range of topics, including:
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+- React Component Lifecycle
+- State and Props
+- Hooks (useState, useEffect, etc.)
+- Redux and State Management
+- Error Handling
+- Best Practices and Performance Optimization
 
-## Local Development
+## Start Your Journey
 
-First, run `pnpm i` to install the dependencies.
+Begin your journey by exploring the questions and answers. Whether you're preparing for a job interview or simply looking to deepen your React knowledge, our website is here to support you. Good luck, and happy learning!
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
 
-## License
+If you have any specific questions or need assistance, please don't hesitate to [contact us](https://t.me/Yabaa101).
 
-This project is licensed under the MIT License.
